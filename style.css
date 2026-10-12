@@ -1,0 +1,193 @@
+/* Configuración general */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f2f4f7;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px;
+}
+
+
+/* Contenedor principal */
+
+.contenedor {
+    width: 100%;
+    max-width: 900px;
+
+    background-color: white;
+
+    padding: 30px;
+
+    border-radius: 15px;
+
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Encabezado */
+
+header {
+    margin-bottom: 25px;
+}
+
+header h1 {
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+header p {
+    color: #666;
+}
+
+
+/* Barra de botones */
+
+.barra-herramientas {
+    display: flex;
+    gap: 10px;
+
+    margin-bottom: 20px;
+
+    flex-wrap: wrap;
+}
+
+
+/* Botones */
+
+button {
+    border: none;
+
+    padding: 10px 18px;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    background-color: #2563eb;
+
+    color: white;
+
+    font-size: 15px;
+
+    transition: 0.2s;
+}
+
+button:hover {
+    background-color: #1d4ed8;
+}
+
+
+/* Botón borrar */
+
+.boton-borrar {
+    background-color: #dc2626;
+}
+
+.boton-borrar:hover {
+    background-color: #b91c1c;
+}
+
+
+/* Título de la nota */
+
+#tituloNota {
+    width: 100%;
+
+    padding: 15px;
+
+    margin-bottom: 15px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 8px;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    outline: none;
+}
+
+#tituloNota:focus {
+    border-color: #2563eb;
+}
+
+
+/* Área de texto */
+
+#contenidoNota {
+    width: 100%;
+
+    min-height: 400px;
+
+    padding: 20px;
+
+    resize: vertical;
+
+    border: 1px solid #ccc;
+
+    border-radius: 8px;
+
+    font-size: 17px;
+
+    line-height: 1.6;
+
+    outline: none;
+}
+
+#contenidoNota:focus {
+    border-color: #2563eb;
+}
+
+
+/* Información inferior */
+
+.informacion {
+    margin-top: 15px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    color: #777;
+
+    font-size: 14px;
+}
+
+
+/* Adaptación para celular */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 10px;
+    }
+
+    .contenedor {
+        padding: 20px;
+    }
+
+    header h1 {
+        font-size: 26px;
+    }
+
+    button {
+        flex: 1;
+    }
+
+    #contenidoNota {
+        min-height: 350px;
+    }
+
+}

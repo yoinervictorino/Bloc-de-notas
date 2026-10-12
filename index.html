@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bloc de Notas</title>
+
+    <!-- Conexión con CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="contenedor">
+
+        <header>
+            <h1>📝 Mi Bloc de Notas</h1>
+            <p>Escribe tus ideas y guárdalas fácilmente.</p>
+        </header>
+
+        <div class="barra-herramientas">
+
+            <button id="nuevaNota">
+                Nueva nota
+            </button>
+
+            <button id="guardarNota">
+                Guardar
+            </button>
+
+            <button id="descargarNota">
+                Descargar
+            </button>
+
+            <button id="borrarNota" class="boton-borrar">
+                Borrar
+            </button>
+
+        </div>
+
+        <input
+            type="text"
+            id="tituloNota"
+            placeholder="Título de la nota..."
+        >
+
+        <textarea
+            id="contenidoNota"
+            placeholder="Empieza a escribir aquí..."
+        ></textarea>
+
+        <div class="informacion">
+
+            <span id="estadoGuardado">
+                Listo
+            </span>
+
+            <span id="contadorPalabras">
+                0 palabras
+            </span>
+
+        </div>
+
+    </div>
+
+    <!-- Conexión con JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>
