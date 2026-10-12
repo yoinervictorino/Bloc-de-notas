@@ -1,23 +1,70 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Bloc de Notas</title>
 
-    <!-- Conexión con CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 </head>
+
 
 <body>
 
     <div class="contenedor">
 
-        <header>
-            <h1>📝 Mi Bloc de Notas</h1>
-            <p>Escribe tus ideas y guárdalas fácilmente.</p>
+        <!-- ===============================
+             ENCABEZADO
+        ================================ -->
+
+        <header class="encabezado">
+
+            <div>
+                <h1>📝 Mi Bloc de Notas</h1>
+
+                <p>
+                    Escribe tus ideas y guárdalas fácilmente.
+                </p>
+            </div>
+
+
+            <div class="cuenta">
+
+                <span id="estadoCuenta">
+                    Modo invitado
+                </span>
+
+                <button
+                    id="abrirLogin"
+                    class="boton-secundario"
+                >
+                    Iniciar sesión
+                </button>
+
+                <button
+                    id="cerrarSesion"
+                    class="boton-secundario oculto"
+                >
+                    Cerrar sesión
+                </button>
+
+            </div>
+
         </header>
+
+
+        <!-- ===============================
+             BOTONES
+        ================================ -->
 
         <div class="barra-herramientas">
 
@@ -33,39 +80,277 @@
                 Descargar
             </button>
 
-            <button id="borrarNota" class="boton-borrar">
+            <button
+                id="borrarNota"
+                class="boton-borrar"
+            >
                 Borrar
             </button>
 
         </div>
 
-        <input
-            type="text"
-            id="tituloNota"
-            placeholder="Título de la nota..."
+
+        <!-- ===============================
+             ZONA PRINCIPAL
+        ================================ -->
+
+        <div class="zona-principal">
+
+
+            <!-- LISTA DE NOTAS -->
+
+            <aside class="panel-notas">
+
+                <h2>Mis notas</h2>
+
+                <p
+                    id="mensajeNotas"
+                    class="mensaje-notas"
+                >
+                    Inicia sesión para ver tus notas guardadas.
+                </p>
+
+                <div id="listaNotas"></div>
+
+            </aside>
+
+
+
+            <!-- EDITOR -->
+
+            <main class="editor">
+
+                <input
+                    type="text"
+                    id="tituloNota"
+                    placeholder="Título de la nota..."
+                >
+
+
+                <textarea
+                    id="contenidoNota"
+                    placeholder="Empieza a escribir aquí..."
+                ></textarea>
+
+
+                <div class="informacion">
+
+                    <span id="estadoGuardado">
+                        Puedes escribir sin iniciar sesión
+                    </span>
+
+                    <span id="contadorPalabras">
+                        0 palabras
+                    </span>
+
+                </div>
+
+            </main>
+
+        </div>
+
+
+
+        <!-- ===============================
+             PANEL DEL ADMINISTRADOR
+        ================================ -->
+
+        <section
+            id="adminPanel"
+            class="admin-panel oculto"
         >
 
-        <textarea
-            id="contenidoNota"
-            placeholder="Empieza a escribir aquí..."
-        ></textarea>
+            <div class="admin-encabezado">
 
-        <div class="informacion">
+                <div>
 
-            <span id="estadoGuardado">
-                Listo
-            </span>
+                    <h2>
+                        🔐 Panel del administrador
+                    </h2>
 
-            <span id="contadorPalabras">
-                0 palabras
-            </span>
+                    <p>
+                        Notas almacenadas por todos los usuarios.
+                    </p>
+
+                </div>
+
+
+                <button
+                    id="actualizarAdmin"
+                    class="boton-secundario"
+                >
+                    Actualizar
+                </button>
+
+            </div>
+
+
+            <div id="notasAdmin"></div>
+
+        </section>
+
+    </div>
+
+
+
+    <!-- ==========================================
+         VENTANA DE LOGIN / REGISTRO
+    =========================================== -->
+
+    <div
+        id="modalAuth"
+        class="modal oculto"
+    >
+
+        <div class="modal-contenido">
+
+
+            <button
+                id="cerrarModal"
+                class="cerrar-modal"
+                type="button"
+            >
+                ×
+            </button>
+
+
+            <h2>Tu cuenta</h2>
+
+
+            <div class="selector-auth">
+
+                <button
+                    id="mostrarLogin"
+                    class="tab-auth activo"
+                    type="button"
+                >
+                    Iniciar sesión
+                </button>
+
+                <button
+                    id="mostrarRegistro"
+                    class="tab-auth"
+                    type="button"
+                >
+                    Crear cuenta
+                </button>
+
+            </div>
+
+
+
+            <!-- LOGIN -->
+
+            <form id="loginForm">
+
+                <label for="loginEmail">
+                    Correo electrónico
+                </label>
+
+                <input
+                    type="email"
+                    id="loginEmail"
+                    placeholder="correo@ejemplo.com"
+                    autocomplete="email"
+                    required
+                >
+
+
+                <label for="loginPassword">
+                    Contraseña
+                </label>
+
+                <input
+                    type="password"
+                    id="loginPassword"
+                    placeholder="Tu contraseña"
+                    autocomplete="current-password"
+                    required
+                >
+
+
+                <button type="submit">
+                    Iniciar sesión
+                </button>
+
+            </form>
+
+
+
+            <!-- REGISTRO -->
+
+            <form
+                id="registroForm"
+                class="oculto"
+            >
+
+                <label for="registroUsuario">
+                    Nombre de usuario
+                </label>
+
+                <input
+                    type="text"
+                    id="registroUsuario"
+                    placeholder="Ejemplo: Yoiner"
+                    minlength="3"
+                    maxlength="30"
+                    required
+                >
+
+
+                <label for="registroEmail">
+                    Correo electrónico
+                </label>
+
+                <input
+                    type="email"
+                    id="registroEmail"
+                    placeholder="correo@ejemplo.com"
+                    autocomplete="email"
+                    required
+                >
+
+
+                <label for="registroPassword">
+                    Contraseña
+                </label>
+
+                <input
+                    type="password"
+                    id="registroPassword"
+                    placeholder="Mínimo 8 caracteres"
+                    minlength="8"
+                    autocomplete="new-password"
+                    required
+                >
+
+
+                <button type="submit">
+                    Crear cuenta
+                </button>
+
+            </form>
+
+
+            <p id="mensajeAuth"></p>
 
         </div>
 
     </div>
 
-    <!-- Conexión con JavaScript -->
+
+
+    <!-- SUPABASE -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+    ></script>
+
+
+    <!-- TU JAVASCRIPT -->
+
     <script src="script.js"></script>
 
 </body>
+
 </html>
