@@ -3,7 +3,7 @@
 // =======================================================
 
 const SUPABASE_URL =
-    "https://xkhfmrphwkvgarofokl.supabase.co";
+    "https://xkhfmrphwkvgarofofkl.supabase.co";
 
 
 const SUPABASE_KEY =
